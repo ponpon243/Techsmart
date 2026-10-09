@@ -1,0 +1,69 @@
+<div class="cart-container">
+  <h2>Shopping Cart</h2>
+
+  <div *ngIf="checkoutSuccess" class="success-banner">
+    <p>🎉 Thank you for your purchase! Your order has been placed successfully.</p>
+    <a routerLink="/orders" class="view-orders-btn">View Order History</a>
+  </div>
+
+  <div *ngIf="loading" class="loading-state">
+    <p>Loading your cart...</p>
+  </div>
+
+  <div *ngIf="!loading && cartItems.length === 0 && !checkoutSuccess" class="empty-cart">
+    <h3>Your cart is empty</h3>
+    <p>Looks like you haven't added any products to your cart yet.</p>
+    <a routerLink="/products" class="shop-now-btn">Shop Now</a>
+  </div>
+
+  <div *ngIf="!loading && cartItems.length > 0" class="cart-content">
+    <div class="cart-items-list">
+      <div *ngFor="let item of cartItems" class="cart-item-card">
+        <div class="item-image">
+          <img [src]="item.imageUrl || 'assets/photo-1.avif'" [alt]="item.productName || 'Product'">
+        </div>
+
+        <div class="item-details">
+          <h4 class="item-name">{{ item.productName || ('Product #' + item.productId) }}</h4>
+          <span class="item-price">₱{{ item.price }} / {{ item.uom || 'pcs' }}</span>
+        </div>
+
+        <div class="item-quantity">
+          <button (click)="decreaseQuantity(item)" [disabled]="item.quantity <= 1">-</button>
+          <span>{{ item.quantity }}</span>
+          <button (click)="increaseQuantity(item)">+</button>
+        </div>
+
+        <div class="item-subtotal">
+          <span>₱{{ (item.price * item.quantity).toFixed(2) }}</span>
+        </div>
+
+        <button class="remove-btn" (click)="removeItem(item)" title="Remove item">
+          Delete
+        </button>
+      </div>
+    </div>
+
+    <div class="cart-summary">
+      <h3>Order Summary</h3>
+      
+      <div class="summary-row">
+        <span>Total Items:</span>
+        <span>{{ cartItems.length }}</span>
+      </div>
+
+      <div class="summary-row total-row">
+        <span>Total Amount:</span>
+        <span class="total-amount">₱{{ getTotalPrice().toFixed(2) }}</span>
+      </div>
+
+      <button class="checkout-btn" (click)="checkout()">
+        Proceed to Checkout
+      </button>
+
+      <button class="clear-cart-btn" (click)="clearCart()">
+        Clear Cart
+      </button>
+    </div>
+  </div>
+</div>

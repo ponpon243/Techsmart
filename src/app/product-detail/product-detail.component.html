@@ -1,0 +1,52 @@
+<div class="product-detail-container">
+  <button class="back-btn" (click)="backToProducts()">&larr; Back to Products</button>
+
+  <div *ngIf="loading" class="loading-spinner">
+    <p>Loading product details...</p>
+  </div>
+
+  <div *ngIf="errorMessage && !loading" class="error-card">
+    <p>{{ errorMessage }}</p>
+    <button (click)="backToProducts()">View All Products</button>
+  </div>
+
+  <div *ngIf="product && !loading" class="detail-card">
+    <div class="image-column">
+      <img [src]="product.imageUrl || product.image || 'assets/photo-1.avif'" [alt]="product.name" class="product-img">
+    </div>
+
+    <div class="info-column">
+      <h1 class="product-title">{{ product.name }}</h1>
+      
+      <div class="price-section">
+        <span class="price-label">Price:</span>
+        <span class="price-value">₱{{ product.price }}</span>
+        <span class="uom-tag" *ngIf="product.uom">/ {{ product.uom }}</span>
+      </div>
+
+      <div class="description-section">
+        <h3>Description</h3>
+        <p class="description-text">{{ product.description || 'No description available for this product.' }}</p>
+      </div>
+
+      <div class="quantity-section">
+        <label>Quantity:</label>
+        <div class="quantity-controls">
+          <button (click)="decreaseQuantity()" [disabled]="quantity <= 1">-</button>
+          <span>{{ quantity }}</span>
+          <button (click)="increaseQuantity()">+</button>
+        </div>
+      </div>
+
+      <div class="action-section">
+        <button class="add-to-cart-btn" (click)="addToCart()">
+          Add to Cart
+        </button>
+      </div>
+
+      <div *ngIf="addedToCart" class="success-alert">
+        ✓ Added {{ quantity }} x {{ product.name }} to your cart!
+      </div>
+    </div>
+  </div>
+</div>

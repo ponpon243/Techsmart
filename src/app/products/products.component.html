@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="products.component.css">
+</head>
+<body>
+
+<div class="gallery">
+  <div *ngFor="let product of products" class="gallery-item" [routerLink]="['/product-detail', product.id]">
+    <div class="img-container">
+      <img [src]="product.imageUrl || product.image || 'assets/photo-1.avif'" [alt]="product.name">
+    </div>
+    <div class="desc">{{product.name}}</div>
+  </div>
+</div><div >
+</div>
+<div>
+  <div >
+
+  </div>
+</div>
