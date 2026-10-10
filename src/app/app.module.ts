@@ -11,8 +11,10 @@ import { CartitemsComponent } from './cartitems/cartitems.component';
 import { OrderitemsComponent } from './orderitems/orderitems.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { FormsModule } from '@angular/forms';
 import { TitleBarComponent } from './title-bar/title-bar.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
+import { SigninComponent } from './signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +28,13 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
     ProductsComponent,
     ProductDetailComponent,
     TitleBarComponent,
-    MenuBarComponent
+    MenuBarComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],

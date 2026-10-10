@@ -4,6 +4,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductsComponent } from './products/products.component';
+import { SigninComponent } from './signin/signin.component';
 
 const routes: Routes = [
     { path: '', component: ProductsComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
     { path: 'products', component: ProductsComponent },
     { path: 'product-detail/:id', component: ProductDetailComponent },
     { path: 'product-detail', component: ProductDetailComponent },
+    { path: 'signin', component: SigninComponent },
 ];
 
 @NgModule({
