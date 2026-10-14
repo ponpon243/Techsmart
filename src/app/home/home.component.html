@@ -1,0 +1,38 @@
+<div class="home-container">
+  <div class="hero">
+    <h1>Welcome to Techsmart</h1>
+    <p>Your one-stop destination for quality tech, electronics, and smart devices.</p>
+  </div>
+
+  <div class="featured-section">
+    <h2>Featured Products</h2>
+
+    <div *ngIf="loading" class="loading-text">
+      Loading products...
+    </div>
+
+    <div *ngIf="!loading && featuredProducts.length > 0" class="products-grid">
+      <div 
+        *ngFor="let product of featuredProducts" 
+        class="product-card" 
+        [routerLink]="['/product-detail', product.id]"
+      >
+        <div class="img-box">
+          <img [src]="product.imageUrl || product.image || 'assets/photo-1.avif'" [alt]="product.name">
+        </div>
+        <div class="product-info">
+          <div class="product-name">{{ product.name }}</div>
+          <div class="product-price">₱{{ product.price }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!loading && featuredProducts.length === 0" class="empty-text">
+      <p>No featured products available at the moment.</p>
+    </div>
+
+    <div class="more-btn-container">
+      <a routerLink="/products" class="btn">View All Products</a>
+    </div>
+  </div>
+</div>

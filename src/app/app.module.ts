@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { TitleBarComponent } from './title-bar/title-bar.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { SigninComponent } from './signin/signin.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SigninComponent } from './signin/signin.component';
     ProductDetailComponent,
     TitleBarComponent,
     MenuBarComponent,
-    SigninComponent
+    SigninComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class OrderService {
   private apiServerUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public getAll(): Observable<Order[]> {
     return this.http.get<Order[]>(`${this.apiServerUrl}/api/order`);
